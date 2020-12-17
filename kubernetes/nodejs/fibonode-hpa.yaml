@@ -1,0 +1,15 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: fibonode-hpa
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    name: fibo-nodejs
+  maxReplicas: 10
+  minReplicas: 1
+  metrics:
+    - type: Resource
+      resource:
+          name: cpu
+          targetAverageUtilization: 80

@@ -1,0 +1,16 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: fibogo-hpa
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    name: fibo-golang 
+  maxReplicas: 10
+  minReplicas: 1
+  metrics:
+    - type: Resource
+      resource:
+          name: cpu
+          targetAverageUtilization: 80
+    
