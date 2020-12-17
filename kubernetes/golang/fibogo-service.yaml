@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-golang
+  namespace: golang
+spec:
+  type: NodePort
+  selector:
+      app: fibo-golang
+  ports:
+    - targetPort: 8080
+      port: 80
+      nodePort: 31880

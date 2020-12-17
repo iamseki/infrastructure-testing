@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fibo-nodejs
+  namespace: nodejs
+  labels:
+    app: fibo-nodejs
+spec:
+  selector:
+    matchLabels:
+      app: fibo-nodejs
+  template:
+    metadata:
+      labels:
+        app: fibo-nodejs
+    spec:
+      containers:
+        - name: fibo-node
+          image: chseki/fibo-app:nodejs
+    

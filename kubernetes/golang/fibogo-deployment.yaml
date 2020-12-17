@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fibo-golang
+  namespace: golang
+  labels:
+    app: fibo-golang
+spec:
+  selector:
+    matchLabels:
+      app: fibo-golang
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: fibo-golang
+    spec:
+      containers:
+        - name: fibo-go
+          image: chseki/fibo-app:golang
+    
