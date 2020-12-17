@@ -2,6 +2,7 @@ apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   name: fibogo-hpa
+  namespace: golang
 spec:
   scaleTargetRef:
     kind: Deployment

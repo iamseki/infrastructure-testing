@@ -2,6 +2,7 @@ apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   name: fibonode-hpa
+  namespace: nodejs
 spec:
   scaleTargetRef:
     kind: Deployment
