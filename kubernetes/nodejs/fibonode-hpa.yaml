@@ -1,16 +1,27 @@
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: fibonode-hpa
   namespace: nodejs
 spec:
+  maxReplicas: 5
+  minReplicas: 2
   scaleTargetRef:
+    apiVersion: apps/v1
     kind: Deployment
-    name: fibo-nodejs
-  maxReplicas: 10
-  minReplicas: 1
+    name: chatbot-persecution-hmg
   metrics:
-    - type: Resource
-      resource:
-          name: cpu
-          targetAverageUtilization: 80
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 80
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        #type: AverageValue
+        #averageValue: 70Mi
+        type: Utilization
+        averageUtilization: 60
